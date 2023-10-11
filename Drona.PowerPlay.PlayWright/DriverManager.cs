@@ -1,3 +1,4 @@
+using System.Configuration;
 using Microsoft.Playwright;
 
 namespace Drona.PowerPlay.PlayWright
@@ -7,18 +8,17 @@ namespace Drona.PowerPlay.PlayWright
     /// </summary>
     public class DriverManager: IDisposable
     {
-
-        private readonly IPlayWrightOptions _playWrightOptions;
-        private readonly DriverInitializer _driverInitializer;
+        private readonly IBrowserOptions _browserOptions;
+        private readonly IDriverInitializer _driverInitializer;
         private readonly AsyncLazy<IBrowser> _currentBrowser;
 
 
         private bool _isDisposed;
 
 
-        public DriverManager(IPlayWrightOptions playWrightOptions, DriverInitializer driverInitializer, AsyncLazy<IBrowser> currentBrowser)
+        public DriverManager(BrowserOptions browserOptions, DriverInitializer driverInitializer)
         {
-            _playWrightOptions = playWrightOptions;
+            _browserOptions = browserOptions;
             _driverInitializer = driverInitializer;
             _currentBrowser = new AsyncLazy<IBrowser>(CreatePlayWrightAsync);
         }
@@ -28,14 +28,14 @@ namespace Drona.PowerPlay.PlayWright
 
         private async Task<IBrowser> CreatePlayWrightAsync()
         {
-            return _playWrightOptions.Browser switch
+            return _browserOptions.Browser switch
             {
-                Browser.Chrome => await _driverInitializer.GetChromeDriverAsync(_playWrightOptions.DefaultTimeout, _playWrightOptions.Headless, _playWrightOptions.SlowMotion, _playWrightOptions.TraceDir, _playWrightOptions.Arguments),
+                Browser.Chrome => await _driverInitializer.GetChromeDriverAsync(_browserOptions),
                
             };
         }
-
-        public void Dispose()
+        
+      public void Dispose()
         {
             if (_isDisposed)
             {
