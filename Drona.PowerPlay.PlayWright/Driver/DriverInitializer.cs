@@ -1,6 +1,6 @@
 using Microsoft.Playwright;
 
-namespace Drona.PowerPlay.PlayWright
+namespace Drona.PowerPlay.PlayWright.Driver
 {
     public interface IDriverInitializer
     {

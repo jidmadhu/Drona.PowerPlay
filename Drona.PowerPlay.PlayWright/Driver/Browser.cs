@@ -1,4 +1,4 @@
-namespace Drona.PowerPlay.PlayWright;
+namespace Drona.PowerPlay.PlayWright.Driver;
 
 public enum Browser
 {
