@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace Drona.PowerPlay.PlayWright
+namespace Drona.PowerPlay.PlayWright.Driver
 {
     public class AsyncLazy<T>: Lazy<Task<T>>
     {

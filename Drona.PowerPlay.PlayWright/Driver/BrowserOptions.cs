@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 using Drona.PowerPlay.PlayWright.Configuration;
 using SpecFlow.Actions.Configuration;
 
-namespace Drona.PowerPlay.PlayWright
+namespace Drona.PowerPlay.PlayWright.Driver
 {
     public interface IBrowserOptions
     {

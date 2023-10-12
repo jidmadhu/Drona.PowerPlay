@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using BoDi;
 using Drona.PowerPlay.PlayWright;
+using Drona.PowerPlay.PlayWright.Driver;
 using Microsoft.Playwright;
 using TechTalk.SpecFlow;
 

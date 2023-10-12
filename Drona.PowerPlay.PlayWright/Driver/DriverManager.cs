@@ -1,7 +1,6 @@
-using System.Configuration;
 using Microsoft.Playwright;
 
-namespace Drona.PowerPlay.PlayWright
+namespace Drona.PowerPlay.PlayWright.Driver
 {
     /// <summary>
     /// Manages the browser instance using playwright
