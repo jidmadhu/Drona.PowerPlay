@@ -24,24 +24,25 @@ public class Hooks
     [BeforeTestRun(Order = 0)]
     public static Task BeforeTestRun(IObjectContainer objectContainer)
     {
-        
+
         var exitCode = Program.Main(new[] { "install" });
         if (exitCode != 0)
         {
             throw new InvalidOperationException($"Playwright exited with code {exitCode}");
         }
+
         return Task.CompletedTask;
     }
 
     [BeforeScenario]
-    public  Task BeforeScenario()
+    public Task BeforeScenario()
     {
         try
         {
             var browser = _driverManager.Current;
-            
-            var context =  browser.Result;
-            var page =   context.NewPageAsync();
+
+            var context = browser.Result;
+            var page = context.NewPageAsync();
             _objectContainer.RegisterInstanceAs(page.Result);
         }
         catch (Exception e)
@@ -49,9 +50,9 @@ public class Hooks
             Console.WriteLine(e);
             throw;
         }
-        
+
         return Task.CompletedTask;
     }
-
     
+
 }
