@@ -1,5 +1,5 @@
+using System.Configuration;
 using System.Threading.Tasks;
-using BoDi;
 using Microsoft.Playwright;
 
 namespace Drona.PowerPlay.Tests.Pages;
@@ -12,6 +12,7 @@ public class SearchPage
 
     public async Task GotoUrl(string url)
     {
+        var test = ConfigurationManager.AppSettings["Browser"];
         await _page.GotoAsync(url);
     }
 }

@@ -1,5 +1,6 @@
+
+#nullable enable
 using System.ComponentModel;
-using System.Configuration;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Drona.PowerPlay.PlayWright.Configuration;
@@ -63,19 +64,13 @@ namespace Drona.PowerPlay.PlayWright
             return specflowActionConfig ?? new SpecflowActionJson();
         }
 
-       
-
-
-        private const string DefaultBrowserTimeOut = "60";
-       
         private static float? ToMilliSeconds(float? seconds) => seconds * 1000;
 
-        public Browser Browser => string.IsNullOrEmpty(ConfigurationManager.AppSettings["Browser"])
+        public Browser Browser => string.IsNullOrEmpty(_specflowJsonPart.Value.Playwright.Browser)
             ? Browser.Chrome
-            : ConfigurationManager.AppSettings["Browser"] switch
+            : _specflowJsonPart.Value.Playwright.Browser switch
             {
                 "chrome" => Browser.Chrome,
-                "edge" => Browser.Edge,
                 "firefox" => Browser.Firefox,
                 "chromium" => Browser.Chromium,
                 "webkit" => Browser.Webkit,
@@ -84,12 +79,12 @@ namespace Drona.PowerPlay.PlayWright
 
         public string[]? Arguments => _specflowJsonPart.Value.Playwright.Arguments;
 
-        public float? DefaultTimeout => ToMilliSeconds(float.Parse(ConfigurationManager.AppSettings["Timeout"] ?? DefaultBrowserTimeOut));
+        public float? DefaultTimeout => ToMilliSeconds(_specflowJsonPart.Value.Playwright.DefaultTimeout);
         public bool? Headless => _specflowJsonPart.Value.Playwright.Headless;
-        public float? SlowMotion => ToMilliSeconds(float.Parse(ConfigurationManager.AppSettings["SlowMotion"] ?? "0"));
-        public string? TraceDir => ConfigurationManager.AppSettings["TraceDir"];
+        public float? SlowMotion => ToMilliSeconds(_specflowJsonPart.Value.Playwright.SlowMotion);
+        public string? TraceDir => _specflowJsonPart.Value.Playwright.TraceDir;
 
-        public string? DownloadPath => ConfigurationManager.AppSettings["DownloadPath"];
+        public string? DownloadPath => _specflowJsonPart.Value.Playwright.DownloadPath;
     }
 }
 

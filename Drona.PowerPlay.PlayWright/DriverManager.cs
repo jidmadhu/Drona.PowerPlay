@@ -31,7 +31,11 @@ namespace Drona.PowerPlay.PlayWright
             return _browserOptions.Browser switch
             {
                 Browser.Chrome => await _driverInitializer.GetChromeDriverAsync(_browserOptions),
-               
+                Browser.Webkit => await _driverInitializer.GetWebKitDriverAsync(_browserOptions),
+                Browser.Firefox => await _driverInitializer.GetFireFoxDriverAsync(_browserOptions),
+                Browser.Chromium => await _driverInitializer.GetChromiumDriverAsync(_browserOptions),
+                Browser.None => await _driverInitializer.GetChromeDriverAsync(_browserOptions),
+                _ => throw new NotSupportedException("Browser not supported. Please check your browser type!")
             };
         }
         

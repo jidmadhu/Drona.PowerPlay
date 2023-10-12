@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 
 namespace Drona.PowerPlay.PlayWright.Configuration
@@ -14,5 +15,17 @@ namespace Drona.PowerPlay.PlayWright.Configuration
             
         [JsonInclude]
         public float? SlowMotion { get; private set; }
+        
+        [JsonInclude]
+        public string? Browser { get; private set; }
+        
+        [JsonInclude]
+        public float? DefaultTimeout { get; private set; }
+        
+        [JsonInclude]
+        public string? TraceDir { get; private set; }
+        
+        [JsonInclude]
+        public string? DownloadPath { get; private set; }
     }
 }
