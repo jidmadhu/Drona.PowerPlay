@@ -1,4 +1,5 @@
 using Microsoft.Playwright;
+using System.Windows;
 
 namespace Drona.PowerPlay.PlayWright.Driver
 {
@@ -20,6 +21,7 @@ namespace Drona.PowerPlay.PlayWright.Driver
             _browserOptions = browserOptions;
             _driverInitializer = driverInitializer;
             _currentBrowser = new AsyncLazy<IBrowser>(CreatePlayWrightAsync);
+            
         }
 
         public Task<IBrowser> Current => _currentBrowser.Value;

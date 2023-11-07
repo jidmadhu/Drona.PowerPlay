@@ -12,7 +12,6 @@ public class SearchPage
 
     public async Task GotoUrl(string url)
     {
-        var test = ConfigurationManager.AppSettings["Browser"];
         await _page.GotoAsync(url);
     }
 }

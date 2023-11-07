@@ -15,6 +15,13 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="Config\**" />
+      <EmbeddedResource Remove="Config\**" />
+      <None Remove="Config\**" />
+      <SpecFlowFeatureFiles Remove="Config\**" />
+      <SpecFlowObsoleteCodeBehindFiles Remove="Config\**" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
@@ -31,10 +38,6 @@
     
     <ItemGroup>
       <ProjectReference Include="..\Drona.PowerPlay.PlayWright\Drona.PowerPlay.PlayWright.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Config\" />
     </ItemGroup>
     <ItemGroup>
         <None Update="specflow.actions.json">
